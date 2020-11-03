@@ -12,8 +12,8 @@ def main():
     # with open(alias_id_file_name, 'r') as f:
     #     alias_ids = json.loads(f.read())
     #
-    print(f'{alias_id_file_name}\n{avrae_token is not None}\n{modified_files}')
-    print(f"repo owner test: {os.environ.get('GITHUB_REPOSITORY_OWNER')}")
+    all_environs = os.environ
+    print(all_environs)
 
 
 if __name__ == '__main__':

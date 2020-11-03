@@ -25,9 +25,12 @@ def main():
         files = [str(filename) for filename in files if str(filename).endswith(ALIAS_SUFFIXES)]
 
         for name in files:
-            print('File Found: ' + os.path.join(root, name))
-            if name in modified_files:
-                to_publish.append(ToPublish(name, os.path.join(root, name)))
+            abs_path = os.path.join(root, name)
+            shared = os.path.commonprefix([abs_path, path_to_files])
+            rel_path = os.path.relpath(abs_path, shared)
+            print('File Found: ' + rel_path)
+            if rel_path in modified_files:
+                to_publish.append(ToPublish(name, abs_path))
     print(to_publish)
 
 

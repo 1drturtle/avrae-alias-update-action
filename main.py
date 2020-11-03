@@ -6,6 +6,8 @@ import fnmatch
 
 ToPublish = collections.namedtuple('ToPublish', ['filename', 'path'])
 
+# alias suffixes:
+ALIAS_SUFFIXES = ('.alias', 'snippet')
 
 def main():
     alias_id_file_name = os.environ.get('INPUT_ALIAS_ID_FILE_NAME')
@@ -18,8 +20,9 @@ def main():
 
     to_publish = []
     for root, dirs, files in os.walk(path_to_files):
+
         # ignore hidden files
-        files = [str(filename) for filename in files if str(filename).endswith('.alias', 'snippet')]
+        files = [str(filename) for filename in files if str(filename).endswith(ALIAS_SUFFIXES)]
 
         for name in files:
             print('File Found: ' + os.path.join(root, name))

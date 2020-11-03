@@ -4,10 +4,11 @@ import json
 import collections
 import fnmatch
 
-ToPublish = collections.namedtuple('ToPublish', ['filename', 'path'])
+ToPublish = collections.namedtuple('ToPublish', ['filename', 'abs_path', 'rel_path'])
 
 # alias suffixes:
 ALIAS_SUFFIXES = ('.alias', 'snippet')
+
 
 def main():
     alias_id_file_name = os.environ.get('INPUT_ALIAS_ID_FILE_NAME')
@@ -29,9 +30,35 @@ def main():
             shared = os.path.commonprefix([abs_path, path_to_files])
             rel_path = os.path.relpath(abs_path, shared)
             print('File Found: ' + rel_path)
-            if rel_path in modified_files:
-                to_publish.append(ToPublish(name, abs_path))
-    print(to_publish)
+            if rel_path in modified_files and rel_path in alias_ids:
+                to_publish.append(ToPublish(name, abs_path=abs_path, rel_path=rel_path))
+
+    out = []
+    for alias in to_publish:
+        # Load File
+        with open(alias.abs_path, 'r') as f:
+            code = f.read()
+            data_post = {
+                "content": code
+            }
+            # Make Requests
+            auth = {'Authorization': avrae_token}
+            root_request_url = 'https://api.avrae.io/workshop/{}/'
+            # POST New Alias Code
+            post_result = requests.post(url=(root_request_url + 'code').format(alias_ids[alias.rel_path]),
+                                        data=json.dumps(data_post),
+                                        headers=auth
+                                        )
+            # PUT new alias code as active
+            data_put = {
+                'version': post_result['data']['version']
+            }
+            put_result = requests.put(url=(root_request_url + 'code').format(alias_ids[alias.rel_path]),
+                                      data=json.dumps(data_put),
+                                      headers=auth
+                                      )
+            print(f'Result for {alias.filename} - POST Result: {post_result["success"]} '
+                  f'PUT Result: {put_result["success"]}')
 
 
 if __name__ == '__main__':

@@ -12,7 +12,7 @@ def main():
     # with open(alias_id_file_name, 'r') as f:
     #     alias_ids = json.loads(f.read())
 
-    print(alias_id_file_name, modified_files, os.listdir('..'+os.path.dirname(os.path.realpath(__file__))))
+    print(alias_id_file_name, modified_files, os.listdir('/'))
 
 
 if __name__ == '__main__':

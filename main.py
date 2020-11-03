@@ -13,8 +13,11 @@ ALIAS_SUFFIXES = ('.alias', 'snippet')
 def main():
     alias_id_file_name = os.environ.get('INPUT_ALIAS_ID_FILE_NAME')
     path_to_files = os.environ.get('GITHUB_WORKSPACE')
-    avrae_token = os.environ.get('INPUT_AVRAE-TOKEN')
+    avrae_token = os.getenv('INPUT_AVRAE-TOKEN', None)
     modified_files = json.loads(os.getenv('INPUT_MODIFIED-FILES', '[]'))
+
+    if avrae_token is None:
+        raise Exception('Invalid API token passed!')
 
     with open(path_to_files + '/' + alias_id_file_name, 'r') as f:
         alias_ids = json.loads(f.read())

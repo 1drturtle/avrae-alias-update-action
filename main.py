@@ -10,7 +10,7 @@ def main():
 
     alias_ids = {}
     with open(alias_id_file_name, 'r') as f:
-        alias_ids = json.loads(f.read())
+        alias_ids = f.read()
 
     print(alias_ids)
 

@@ -21,6 +21,7 @@ def main():
         files = [f for f in files if not f[0] == '.']
 
         for name in files:
+            print('File Found: '+name)
             if name in modified_files:
                 to_publish.append(ToPublish(name, os.path.join(root, name)))
     print(to_publish)

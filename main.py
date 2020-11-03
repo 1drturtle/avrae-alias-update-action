@@ -2,6 +2,7 @@ import os
 import requests
 import json
 import collections
+import fnmatch
 
 ToPublish = collections.namedtuple('ToPublish', ['filename', 'path'])
 
@@ -18,10 +19,10 @@ def main():
     to_publish = []
     for root, dirs, files in os.walk(path_to_files):
         # ignore hidden files
-        files = [f for f in files if not f[0] == '.']
+        files = [file for file in files if file.endswith('.alias', 'snippet')]
 
         for name in files:
-            print('File Found: '+name)
+            print('File Found: ' + os.path.join(root, name))
             if name in modified_files:
                 to_publish.append(ToPublish(name, os.path.join(root, name)))
     print(to_publish)

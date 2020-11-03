@@ -18,7 +18,8 @@ def main():
             continue
         to_publish.append(filename)
 
-    print(alias_ids, modified_files, os.listdir(path_to_files), to_publish)
+    x = [alias_ids, modified_files, os.listdir(path_to_files), to_publish]
+    print('\n'.join([str(y) for y in x]))
 
 
 if __name__ == '__main__':

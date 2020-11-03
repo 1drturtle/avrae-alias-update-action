@@ -23,9 +23,12 @@ def main():
     if collection['success']:
         collection = collection['data']
         for alias in collection['aliases']:
-            print(f"Alias !{alias['name']} found,git ID: {alias['_id']}")
+            print(f"Alias !{alias['name']} found, ID: {alias['_id']}")
             subaliases = alias['subcommands']
             print_subaliases(alias, [alias["name"]])
+        for snippet in collection['snippets']:
+            print(f"Snippet !{snippet['name']} found, ID: {snippet['_id']}")
+
     else:
         return print('Error in Collection: ', collection)
 

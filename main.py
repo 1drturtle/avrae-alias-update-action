@@ -49,17 +49,18 @@ def main():
                                         data=json.dumps(data_post),
                                         headers=auth
                                         ).json()
-            # PUT new alias code as active
-            data_put = {
-                'version': post_result['data']['version']
-            }
-            put_result = requests.put(url=(root_request_url + 'code').format(alias_ids[alias.rel_path]),
-                                      data=json.dumps(data_put),
-                                      headers=auth
-                                      ).json()
-            print(f'Result for {alias.filename} (Version #{data_put["version"]}) - '
-                  f'POST Result: {post_result["success"]} '
-                  f'PUT Result: {put_result["success"]}')
+            print(post_result)
+            # # PUT new alias code as active
+            # data_put = {
+            #     'version': post_result['data']['version']
+            # }
+            # put_result = requests.put(url=(root_request_url + 'code').format(alias_ids[alias.rel_path]),
+            #                           data=json.dumps(data_put),
+            #                           headers=auth
+            #                           ).json()
+            # print(f'Result for {alias.filename} (Version #{data_put["version"]}) - '
+            #       f'POST Result: {post_result["success"]} '
+            #       f'PUT Result: {put_result["success"]}')
 
 
 if __name__ == '__main__':

@@ -47,7 +47,7 @@ def main():
             # Make Requests
             auth = {'avrae-token': avrae_token}
             type = 'alias' if alias.filename.endswith('.alias') else 'snippet'
-            root_request_url = 'https://api.avrae.io/workshop/'+type+'/{}/'
+            root_request_url = 'https://avraetest11249.requestcatcher.com/workshop/'+type+'/{}/'
             # POST New Alias Code
             post_result = requests.post(url=(root_request_url + 'code').format(alias_ids[alias.rel_path]),
                                         json=data_post,

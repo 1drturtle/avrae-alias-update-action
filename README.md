@@ -38,4 +38,4 @@ If you find a bug/issue with anything in this repository, open an issue! If you 
 
 Further Questions
 -----------------
-If you have any other questions contact me at the [Avrae Discord](https://invite.avrae.io). My username is Dr Turtle#1771.
+If you have any other questions contact me at the [Avrae Discord](https://support.avrae.io). My username is Dr Turtle#1771.

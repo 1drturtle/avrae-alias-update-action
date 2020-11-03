@@ -36,7 +36,6 @@ def main():
             if rel_path in modified_files and rel_path in alias_ids:
                 to_publish.append(ToPublish(name, abs_path=abs_path, rel_path=rel_path))
 
-    out = []
     for alias in to_publish:
         # Load File
         with open(alias.abs_path, 'r') as f:
@@ -59,7 +58,7 @@ def main():
             data_put = {
                 'version': post_result['data']['version']
             }
-            put_url = (root_request_url + 'code').format(alias_ids[alias.rel_path])
+            put_url = (root_request_url + 'active-code').format(alias_ids[alias.rel_path])
             print('PUT Request Sent to '+put_url)
             put_result = requests.put(url=put_url,
                                       json=data_put,

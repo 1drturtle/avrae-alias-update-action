@@ -19,7 +19,7 @@ def main():
     to_publish = []
     for root, dirs, files in os.walk(path_to_files):
         # ignore hidden files
-        files = [file for file in files if file.endswith('.alias', 'snippet')]
+        files = [str(filename) for filename in files if str(filename).endswith('.alias', 'snippet')]
 
         for name in files:
             print('File Found: ' + os.path.join(root, name))

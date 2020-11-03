@@ -26,7 +26,7 @@ For this you will need to do some changes to your repository, as well as acquire
     ii. In your new alias-ids.json file, you will need to create a dictionary of file paths to alias ids. For example:
 ```json
 {
-    "aliases/test-alias.alias": '5xxxxxxxxxxxxxxxxxxxxxxx'
+    "aliases/test-alias.alias": "5xxxxxxxxxxxxxxxxxxxxxxx"
 }
 ```
 4. Add these new files to your git repository and push to the `master` branch. The workflow should automatically start running.

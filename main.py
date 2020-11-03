@@ -43,7 +43,7 @@ def main():
             }
             # Make Requests
             auth = {'Authorization': avrae_token}
-            root_request_url = 'https://api.avrae.io/workshop/{}/'
+            root_request_url = 'https://api.avrae.io/workshop/alias/{}/'
             # POST New Alias Code
             post_result = requests.post(url=(root_request_url + 'code').format(alias_ids[alias.rel_path]),
                                         data=json.dumps(data_post),

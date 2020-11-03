@@ -1,0 +1,16 @@
+name: 'Update Avrae Aliases'
+description: 'Looks at which files are modified and updates Avrae aliases based off of alias-ids.json'
+inputs:
+  alias-ids-file:
+    description: 'path to file that contains the alias ids'
+    required: true
+    default: 'alias-ids.json'
+  avrae-token:
+    description: 'Your Avrae API token'
+    required: true
+  modified-files:
+    description: "JSON list of modified files"
+    required: true
+runs:
+  using: "docker"
+  image: "Dockerfile"

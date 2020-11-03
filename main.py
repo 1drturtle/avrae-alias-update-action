@@ -1,6 +1,9 @@
 import os
 import requests
 import json
+import collections
+
+ToPublish = collections.namedtuple('ToPublish', ['filename', 'path'])
 
 
 def main():
@@ -13,19 +16,15 @@ def main():
         alias_ids = json.loads(f.read())
 
     to_publish = []
-    for filename in os.listdir(path_to_files):
-        if filename.startswith('.'):
-            continue
-
-        to_publish.append(filename)
-
-    to_publish = []
     for root, dirs, files in os.walk(path_to_files):
         # ignore hidden files
         files = [f for f in files if not f[0] == '.']
 
         for name in files:
-            print(os.path.join(root, name))
+            if name in alias_ids:
+                to_publish.append(ToPublish(name, os.path.join(root, name)))
+    print(to_publish)
+
 
 if __name__ == '__main__':
     main()

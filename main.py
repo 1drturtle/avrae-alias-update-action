@@ -47,7 +47,7 @@ def main():
             root_request_url = 'https://api.avrae.io/workshop/'+type+'/{}/'
             # POST New Alias Code
             post_result = requests.post(url=(root_request_url + 'code').format(alias_ids[alias.rel_path]),
-                                        data=json.dumps(data_post),
+                                        json=data_post,
                                         headers=auth
                                         ).json()
             print(post_result)
@@ -56,7 +56,7 @@ def main():
             #     'version': post_result['data']['version']
             # }
             # put_result = requests.put(url=(root_request_url + 'code').format(alias_ids[alias.rel_path]),
-            #                           data=json.dumps(data_put),
+            #                           json=data_put,
             #                           headers=auth
             #                           ).json()
             # print(f'Result for {alias.filename} (Version #{data_put["version"]}) - '

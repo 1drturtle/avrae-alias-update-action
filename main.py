@@ -48,7 +48,7 @@ def main():
             post_result = requests.post(url=(root_request_url + 'code').format(alias_ids[alias.rel_path]),
                                         data=json.dumps(data_post),
                                         headers=auth
-                                        )
+                                        ).json()
             # PUT new alias code as active
             data_put = {
                 'version': post_result['data']['version']
@@ -56,8 +56,9 @@ def main():
             put_result = requests.put(url=(root_request_url + 'code').format(alias_ids[alias.rel_path]),
                                       data=json.dumps(data_put),
                                       headers=auth
-                                      )
-            print(f'Result for {alias.filename} - POST Result: {post_result["success"]} '
+                                      ).json()
+            print(f'Result for {alias.filename} (Version #{data_put["version"]}) - '
+                  f'POST Result: {post_result["success"]} '
                   f'PUT Result: {put_result["success"]}')
 
 

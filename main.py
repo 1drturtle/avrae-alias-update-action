@@ -13,7 +13,7 @@ ALIAS_SUFFIXES = ('.alias', 'snippet')
 def main():
     alias_id_file_name = os.environ.get('INPUT_ALIAS_ID_FILE_NAME')
     path_to_files = os.environ.get('GITHUB_WORKSPACE')
-    avrae_token = os.environ.get('INPUT_AVRAE_TOKEN')
+    avrae_token = os.environ.get('INPUT_AVRAE-TOKEN')
     modified_files = json.loads(os.getenv('INPUT_MODIFIED-FILES', '[]'))
 
     with open(path_to_files + '/' + alias_id_file_name, 'r') as f:
@@ -42,7 +42,7 @@ def main():
                 "content": code
             }
             # Make Requests
-            auth = {'Authorization': avrae_token}
+            auth = {'avrae-token': avrae_token}
             type = 'alias' if alias.filename.endswith('.alias') else 'snippet'
             root_request_url = 'https://api.avrae.io/workshop/'+type+'/{}/'
             # POST New Alias Code

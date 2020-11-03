@@ -21,6 +21,9 @@ def main():
 
     to_publish = []
     for root, dirs, files in os.walk(path_to_files):
+        # ignore hidden files
+        files = [f for f in files if not f[0] == '.']
+
         for name in files:
             print(os.path.join(root, name))
 

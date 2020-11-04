@@ -1,5 +1,9 @@
 name: 'Update Avrae Aliases'
 description: 'Looks at which files are modified and updates Avrae aliases based off of alias-ids.json'
+branding:
+  color: 'blue'
+  icon: 'upload-cloud'
+
 inputs:
   alias-ids-file:
     description: 'path to file that contains the alias ids'

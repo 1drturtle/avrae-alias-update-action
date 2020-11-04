@@ -22,7 +22,7 @@ For this you will need to do some changes to your repository, as well as acquire
 	i. With your Avrae Token, go to your GitHub Repository and click settings. Then, near the bottom-left click Secrets. Click New Secret and call it `AVRAETOKEN`, and put your token into the value textbox.
 2. Make a new folder in your repository called `.github/workflows`. In this folder make a document called `update_workflow.yml`. Paste the contents of the `example-workflow.yml` file (that exists in this repository) into your `update_workflow.yml`
 3. In the base of your repository, make a file called `alias-ids.json`.
-    i. Before doing this, in your cloned version of the repository, navigate to the `scripts` folder and open a terminal there. For each collection you would like to auto-update, run `python aliases_from_collections.py (id of collection)` (You can get the ID of your collection by looking at the URL bar when on the collections page. it will look something like `5xxxxxxxxxxxxxxxxxxxxxxx`). Keep the output of this script, as you will need the ID's
+    i. Before doing this, in your cloned version of the repository, navigate to the `scripts` folder and open a terminal there. For each collection you would like to auto-update, run `python aliases_from_collection.py (id of collection)` (You can get the ID of your collection by looking at the URL bar when on the collections page. it will look something like `5xxxxxxxxxxxxxxxxxxxxxxx`). Keep the output of this script, as you will need the ID's
     ii. In your new alias-ids.json file, you will need to create a dictionary of file paths to alias ids. For example:
 ```json
 {

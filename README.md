@@ -1,4 +1,6 @@
 
+> This is outdated. Use https://github.com/1drturtle/avrae-autoupdate/ instead.
+
 Automatic Avrae Alias Updating
 =============================
 
